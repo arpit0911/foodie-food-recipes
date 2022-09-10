@@ -1,5 +1,5 @@
 import Pages from "./pages/Pages";
-import "./app.css";
+import "./App.css";
 import Category from "./components/Category";
 import { BrowserRouter } from "react-router-dom";
 import Search from "./components/Search";

@@ -5,7 +5,7 @@ function Cuisine() {
   const [cuisines, setCuisines] = useState([]);
   let params = useParams();
   useEffect(() => {
-    console.log(params.type);
+    // console.log(params.type);
     getCuisineData(params.type);
   }, [params.type]);
   const getCuisineData = async (name) => {

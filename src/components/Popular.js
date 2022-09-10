@@ -19,7 +19,7 @@ export default function Popular() {
       const data = await respose.json();
       localStorage.setItem("popular", JSON.stringify(data.recipes));
       setPopularRecipies(data);
-      console.log(data);
+      // console.log(data);
     }
   }
 

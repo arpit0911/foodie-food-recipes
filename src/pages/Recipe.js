@@ -15,7 +15,7 @@ function Recipe() {
       `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
     );
     const data = await respose.json();
-    console.log(data);
+    // console.log(data);
     setRecipeInfo(data);
   };
 
