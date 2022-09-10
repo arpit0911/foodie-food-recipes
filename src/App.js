@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Pages from "./pages/Pages";
+import "./app.css";
+import Category from "./components/Category";
+import { BrowserRouter } from "react-router-dom";
+import Search from "./components/Search";
+import { SiFoodpanda } from "react-icons/si";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <BrowserRouter>
+        <header>
+          <div className="logo-container">
+            <SiFoodpanda />
+          </div>
+          <h1>Foodie food</h1>
+        </header>
+        <Search />
+        <Category />
+        <Pages />
+      </BrowserRouter>
+    </main>
   );
 }
 
