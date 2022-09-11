@@ -13,13 +13,17 @@ export default function Popular() {
     if (check) {
       setVegRecipies(JSON.parse(check));
     } else {
-      const respose = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=vegetarian`
-      );
-      const data = await respose.json();
-      localStorage.setItem("veggie", JSON.stringify(data.recipes));
-      setVegRecipies(data);
-      // console.log(data);
+      try {
+        const respose = await fetch(
+          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=vegetarian`
+        );
+        const data = await respose.json();
+        localStorage.setItem("veggie", JSON.stringify(data.recipes));
+        setVegRecipies(data);
+        // console.log(data);
+      } catch (error) {
+        alert("Problem getting data", error);
+      }
     }
   }
 
@@ -38,7 +42,7 @@ export default function Popular() {
         >
           {vegRecipies.map((recipe) => {
             return (
-              <SplideSlide key={recipe.id}>
+              <SplideSlide className="slide-style" key={recipe.id}>
                 <Link to={`/recipe/${recipe.id}`}>
                   <div className="food-card">
                     <img

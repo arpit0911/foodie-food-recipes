@@ -9,18 +9,15 @@ function Cuisine() {
     getCuisineData(params.type);
   }, [params.type]);
   const getCuisineData = async (name) => {
-    // const check = localStorage.getItem(name);
-    // if (check) {
-    //   setCuisines(JSON.parse(check));
-    // } else {
-    const respose = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`
-    );
-    const data = await respose.json();
-    // localStorage.setItem(name, JSON.stringify(data.results));
-    // console.log(data.results);
-    setCuisines(data.results);
-    // }
+    try {
+      const respose = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`
+      );
+      const data = await respose.json();
+      setCuisines(data.results);
+    } catch (error) {
+      alert("problem getting data", error);
+    }
   };
   return (
     <div className="cuisines-grid">

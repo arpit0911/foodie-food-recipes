@@ -4,14 +4,17 @@ import Category from "./components/Category";
 import { BrowserRouter } from "react-router-dom";
 import Search from "./components/Search";
 import { SiFoodpanda } from "react-icons/si";
+import { Link } from "react-router-dom";
 function App() {
   return (
     <main>
       <BrowserRouter>
         <header>
-          <div className="logo-container">
-            <SiFoodpanda />
-          </div>
+          <Link to="/">
+            <div className="logo-container">
+              <SiFoodpanda />
+            </div>
+          </Link>
           <h1>Foodie food</h1>
         </header>
         <Search />

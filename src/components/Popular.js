@@ -13,13 +13,17 @@ export default function Popular() {
     if (check) {
       setPopularRecipies(JSON.parse(check));
     } else {
-      const respose = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`
-      );
-      const data = await respose.json();
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
-      setPopularRecipies(data);
-      // console.log(data);
+      try {
+        const respose = await fetch(
+          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`
+        );
+        const data = await respose.json();
+        localStorage.setItem("popular", JSON.stringify(data.recipes));
+        setPopularRecipies(data.recipes);
+        // console.log(data);
+      } catch (error) {
+        alert("Problem getting data", error);
+      }
     }
   }
 
@@ -38,19 +42,19 @@ export default function Popular() {
         >
           {popularRecipies.map((recipe) => {
             return (
-              <SplideSlide key={recipe.id}>
-                <div className="food-card">
-                  <Link to={`/recipe/${recipe.id}`}>
+              <SplideSlide className="slide-style" key={recipe.id}>
+                <Link to={`/recipe/${recipe.id}`}>
+                  <div className="food-card">
                     <img
                       className="food-poster"
                       src={recipe.image}
-                      alt={recipe.title} 
+                      alt={recipe.title}
                     />
                     <div className="food-details">
                       <h5>{recipe.title}</h5>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </SplideSlide>
             );
           })}
