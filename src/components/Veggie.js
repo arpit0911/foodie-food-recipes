@@ -19,7 +19,7 @@ export default function Popular() {
         );
         const data = await respose.json();
         localStorage.setItem("veggie", JSON.stringify(data.recipes));
-        setVegRecipies(data);
+        setVegRecipies(data.recipes);
         // console.log(data);
       } catch (error) {
         alert("Problem getting data", error);
