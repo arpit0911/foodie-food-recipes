@@ -11,12 +11,18 @@ function Recipe() {
   }, [params.id]);
 
   const getRecipeInformation = async (id) => {
+    // const check = localStorage.getItem("recipe");
+    // if (check) {
+    //   setRecipeInfo(JSON.parse(check));
+    // } else {
     const respose = await fetch(
       `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
     );
     const data = await respose.json();
+    // localStorage.setItem("recipe", JSON.stringify(data));
     // console.log(data);
     setRecipeInfo(data);
+    // }
   };
 
   return (
