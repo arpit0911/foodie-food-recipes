@@ -28,38 +28,39 @@ export default function Popular() {
   }
 
   return (
-    <section className="food-section">
+    <>
       <h2>Popular</h2>
-      <div>
-        <Splide
-          options={{
-            perPage: 4,
-            gap: ".5rem",
-            arrows: true,
-            pagination: false,
-            drag: "free",
-          }}
-        >
-          {popularRecipies.map((recipe) => {
-            return (
-              <SplideSlide className="slide-style" key={recipe.id}>
-                <Link to={`/recipe/${recipe.id}`}>
-                  <div className="food-card">
-                    <img
-                      className="food-poster"
-                      src={recipe.image}
-                      alt={recipe.title}
-                    />
-                    <div className="food-details">
-                      <h5>{recipe.title}</h5>
-                    </div>
+      {/* <div> */}
+      <Splide
+        options={{
+          perPage: "3",
+          gap: ".5rem",
+          arrows: false,
+          pagination: false,
+          drag: "free",
+          width: "100%",
+        }}
+      >
+        {popularRecipies.map((recipe) => {
+          return (
+            <SplideSlide className="slide-style" key={recipe.id}>
+              <Link to={`/recipe/${recipe.id}`}>
+                <div className="food-card">
+                  <img
+                    className="food-poster"
+                    src={recipe.image}
+                    alt={recipe.title}
+                  />
+                  <div className="food-details">
+                    <h5>{recipe.title}</h5>
                   </div>
-                </Link>
-              </SplideSlide>
-            );
-          })}
-        </Splide>
-      </div>
-    </section>
+                </div>
+              </Link>
+            </SplideSlide>
+          );
+        })}
+      </Splide>
+      {/* </div> */}
+    </>
   );
 }
