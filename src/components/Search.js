@@ -9,7 +9,9 @@ function Search() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log("searched");
+
     navigate(`/discovered/${inputValue}`);
+    setInputValue("");
   };
   return (
     <>

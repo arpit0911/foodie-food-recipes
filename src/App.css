@@ -71,16 +71,13 @@ main {
 .food-poster {
   width: 100%;
 }
-/* .splide-row {
-  border: 1px solid red;
-  width: 100%;
-} */
+
 .slide-style {
   /* border: 1px solid rebeccapurple; */
   padding: 1rem 0;
   
 }
-/* ***** category */
+/* ***** navigation bar */
 
 nav {
   display: flex;
