@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import FoodCard from "../components/FoodCard";
 
 function Discovered() {
   const [searchedItem, setSearchItem] = useState([]);
@@ -18,16 +19,14 @@ function Discovered() {
   };
   return (
     <div className="cuisines-grid">
-      {searchedItem.map((item) => {
+      {searchedItem.map((cuisine) => {
         return (
-          <div key={item.id} className="food-card">
-            <Link to={`/recipe/${item.id}`}>
-              <img className="food-poster" src={item.image} alt={item.title} />
-              <div className="food-details">
-                <h4>{item.title}</h4>
-              </div>
-            </Link>
-          </div>
+          <FoodCard
+            key={cuisine.id}
+            id={cuisine.id}
+            image={cuisine.image}
+            title={cuisine.title}
+          />
         );
       })}
     </div>

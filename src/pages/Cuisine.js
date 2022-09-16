@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import FoodCard from "../components/FoodCard";
 
 function Cuisine() {
   const [cuisines, setCuisines] = useState([]);
@@ -23,18 +24,12 @@ function Cuisine() {
     <div className="cuisines-grid">
       {cuisines.map((cuisine) => {
         return (
-          <div key={cuisine.id} className="food-card">
-            <Link to={`/recipe/${cuisine.id}`}>
-              <img
-                className="food-poster"
-                src={cuisine.image}
-                alt={cuisine.title}
-              />
-              <div className="food-details">
-                <h4>{cuisine.title}</h4>
-              </div>
-            </Link>
-          </div>
+          <FoodCard
+            key={cuisine.id}
+            id={cuisine.id}
+            image={cuisine.image}
+            title={cuisine.title}
+          />
         );
       })}
     </div>

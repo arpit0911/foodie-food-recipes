@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import { Link } from "react-router-dom";
+import FoodCard from "./FoodCard";
 export default function Popular() {
   const [vegRecipies, setVegRecipies] = useState([]);
   useEffect(() => {
@@ -44,18 +44,11 @@ export default function Popular() {
         {vegRecipies.map((recipe) => {
           return (
             <SplideSlide className="slide-style" key={recipe.id}>
-              <Link to={`/recipe/${recipe.id}`}>
-                <div className="food-card">
-                  <img
-                    className="food-poster"
-                    src={recipe.image}
-                    alt={recipe.title}
-                  />
-                  <div className="food-details">
-                    <h5>{recipe.title}</h5>
-                  </div>
-                </div>
-              </Link>
+              <FoodCard
+                id={recipe.id}
+                title={recipe.title}
+                image={recipe.image}
+              />
             </SplideSlide>
           );
         })}
