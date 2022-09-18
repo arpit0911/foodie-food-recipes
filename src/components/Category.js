@@ -6,26 +6,20 @@ import {
   GiHamburger,
 } from "react-icons/gi";
 import { NavLink as Link } from "react-router-dom";
+import NavItem from "./NavItem";
 
 function Category() {
+  const navData = [
+    { type: "Italian", icon: <GiFullPizza /> },
+    { type: "Chinese", icon: <GiChopsticks /> },
+    { type: "Thai", icon: <GiNoodles /> },
+    { type: "American", icon: <GiHamburger /> },
+  ];
   return (
     <nav>
-      <Link className="nav-item" to="cuisine/Italian">
-        <GiFullPizza />
-        <h5>Italian</h5>
-      </Link>
-      <Link className="nav-item" to="cuisine/Chinese">
-        <GiChopsticks />
-        <h5>Chinese</h5>
-      </Link>
-      <Link className="nav-item" to="cuisine/Thai">
-        <GiNoodles />
-        <h5>Thai</h5>
-      </Link>
-      <Link className="nav-item" to="cuisine/American">
-        <GiHamburger />
-        <h5>American</h5>
-      </Link>
+      {navData.map((item) => {
+        return <NavItem type={item.type} icon={item.icon} />;
+      })}
     </nav>
   );
 }
